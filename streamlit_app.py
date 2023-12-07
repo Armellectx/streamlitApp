@@ -11,7 +11,7 @@ from tensorflow.keras.preprocessing.image import img_to_array, load_img
 
 @st.cache_data()
 def load():
-    model = ResNet50(weights='imagenet', include_top=dense)
+    model = ResNet50(weights='imagenet', include_top=True)
     #model_path = "best_model.h5"
     #model = load_model(model_path, compile=False)
     return model

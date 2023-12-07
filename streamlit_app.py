@@ -1,5 +1,9 @@
 import streamlit as st
-from tensorflow.keras.models import load_model
+from tensorflow.keras.applications import ResNet50
+from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
+from tensorflow.keras.models import Model
+from tensorflow.keras.utils import to_categorical
 import numpy as np
 from PIL import Image
 import cv2
@@ -7,8 +11,9 @@ from tensorflow.keras.preprocessing.image import img_to_array, load_img
 
 @st.cache_data()
 def load():
-    model_path = "best_model.h5"
-    model = load_model(model_path, compile=False)
+    model = ResNet50(weights='imagenet', include_top=dense)
+    #model_path = "best_model.h5"
+    #model = load_model(model_path, compile=False)
     return model
 
 # Chargement du model
